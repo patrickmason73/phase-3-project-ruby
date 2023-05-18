@@ -3,5 +3,6 @@ class ApplicationController < Sinatra::Base
   
     get '/philosophers' do 
         philosophers = Philosopher.all
+        philosopher.to_json
     end
 end

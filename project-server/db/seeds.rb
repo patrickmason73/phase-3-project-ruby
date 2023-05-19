@@ -1,4 +1,8 @@
 puts "🌱 Seeding messages..."
+Philosopher.delete_all
+Origin.delete_all
+Era.delete_all
+Quote.delete_all
 
 diogenes = Philosopher.create(name: "Diogenes")
 socrates = Philosopher.create(name: "Socrates")
@@ -40,6 +44,133 @@ zeno_quote_2 = Quote.create(quote: "Beauty is the flower of chastity.")
 
 antisthenes_quote_1 = Quote.create(quote: "There are only two people who can tell you the truth about yourself - an enemy who has lost his temper and a friend who loves you dearly.")
 antisthenes_quote_2 = Quote.create(quote: "As iron is eaten away by rust, so the envious are consumed by their own passion.")
+
+
+diogenes_quote_1.philosopher = diogenes
+diogenes_quote_2.philosopher = diogenes
+diogenes_quote_3.philosopher = diogenes
+
+diogenes.origin = athens
+diogenes.era = ancient_greek
+
+diogenes_quote_1.origin = athens
+diogenes_quote_1.era = ancient_greek
+diogenes_quote_2.origin = athens
+diogenes_quote_2.era = ancient_greek
+diogenes_quote_3.origin = athens
+diogenes_quote_3.era = ancient_greek
+
+
+socrates_quote_1.philosopher = socrates
+socrates_quote_2.philosopher = socrates
+
+socrates.origin = athens
+socrates.era = ancient_greek
+
+socrates_quote_1.origin = athens
+socrates_quote_1.era = ancient_greek
+socrates_quote_2.origin = athens
+socrates_quote_2.era = ancient_greek
+
+
+plato_quote_1.philosopher = plato
+plato_quote_2.philosopher = plato
+
+plato.origin = athens
+plato.era = ancient_greek
+
+plato_quote_1.origin = athens
+plato_quote_1.era = ancient_greek
+plato_quote_2.origin = athens
+plato_quote_2.era = ancient_greek
+
+
+
+aristotle_quote_1.philosopher = aristotle
+aristotle_quote_2.philosopher = aristotle
+
+aristotle.origin = stagira
+aristotle.era = ancient_greek
+
+aristotle_quote_1.origin = stagira
+aristotle_quote_1.era = ancient_greek
+aristotle_quote_2.origin = stagira
+aristotle_quote_2.era = ancient_greek
+
+
+
+xenophon_quote_1.philosopher = xenophon
+xenophon_quote_2.philosopher = xenophon
+
+xenophon.origin = athens
+xenophon.era = ancient_greek
+
+xenophon_quote_1.origin = athens
+xenophon_quote_1.era = ancient_greek
+xenophon_quote_2.origin = athens
+xenophon_quote_2.era = ancient_greek
+
+
+parmenides_quote_1.philosopher = parmenides
+parmenides_quote_2.philosopher = parmenides
+
+parmenides.origin = elea
+parmenides.era = pre_socratic
+
+parmenides_quote_1.origin = elea
+parmenides_quote_1.era = pre_socratic
+parmenides_quote_2.origin = elea
+parmenides_quote_2.era = pre_socratic
+
+
+zeno_quote_1.philosopher = zeno
+zeno_quote_2.philosopher = zeno
+
+zeno.origin = elea
+zeno.era = pre_socratic
+
+zeno_quote_1.origin = elea
+zeno_quote_1.era = pre_socratic
+zeno_quote_2.origin = elea
+zeno_quote_2.era = pre_socratic
+
+
+antisthenes_quote_1.philosopher = antisthenes
+antisthenes_quote_2.philosopher = antisthenes
+
+antisthenes.origin = athens
+antisthenes.era = ancient_greek
+
+antisthenes_quote_1.origin = athens
+antisthenes_quote_1.era = ancient_greek
+antisthenes_quote_2.origin = athens
+antisthenes_quote_2.era = ancient_greek
+
+diogenes.quotes << [diogenes_quote_1, diogenes_quote_2, diogenes_quote_3]
+socrates.quotes << [socrates_quote_1, socrates_quote_2]
+plato.quotes << [plato_quote_1, plato_quote_2]
+aristotle.quotes << [aristotle_quote_1, aristotle_quote_2]
+xenophon.quotes << [xenophon_quote_1, xenophon_quote_2]
+parmenides.quotes << [parmenides_quote_1, parmenides_quote_2]
+zeno.quotes << [zeno_quote_1, zeno_quote_2]
+antisthenes.quotes << [antisthenes_quote_1, antisthenes_quote_2]
+
+athens.philosophers << [plato, socrates, xenophon, antisthenes, diogenes]
+stagira.philosophers << [aristotle]
+elea.philosophers << [parmenides, zeno]
+
+athens.quotes = [diogenes_quote_1, diogenes_quote_2, diogenes_quote_3, socrates_quote_1, socrates_quote_2, 
+plato_quote_1, plato_quote_2, xenophon_quote_1, xenophon_quote_2, antisthenes_quote_1, antisthenes_quote_2]
+stagira.quotes = [aristotle_quote_1, aristotle_quote_2]
+elea.quotes = [zeno_quote_1, zeno_quote_2, parmenides_quote_1, parmenides_quote_2]
+
+
+ancient_greek.philosophers = [antisthenes, aristotle, xenophon, socrates, plato, diogenes]
+pre_socratic.philosophers = [parmenides, zeno]
+ancient_greek.quotes = [diogenes_quote_1, diogenes_quote_2, diogenes_quote_3, socrates_quote_1, socrates_quote_2, 
+plato_quote_1, plato_quote_2, xenophon_quote_1, xenophon_quote_2, antisthenes_quote_1, antisthenes_quote_2, aristotle_quote_1, aristotle_quote_2]
+pre_socratic.quotes = [zeno_quote_1, zeno_quote_2, parmenides_quote_1, parmenides_quote_2]
+
 
 
 puts "✅ Done seeding!"

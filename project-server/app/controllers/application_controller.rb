@@ -3,7 +3,17 @@ class ApplicationController < Sinatra::Base
   
     get '/philosophers' do 
         philosophers = Philosopher.all
+        philosophers.to_json
+    end
+
+    get '/philosophers/:id' do 
+        philosopher = Philosopher.find(params[:id])
         philosopher.to_json
+    end
+
+    get '/quote/comments' do
+        comments = Comment.find_by(params[:quote_id])
+        comments.to_json
     end
 
     post '/comments' do

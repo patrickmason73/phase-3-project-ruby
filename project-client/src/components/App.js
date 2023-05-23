@@ -5,13 +5,14 @@ import PhilosopherCard from "./PhilosopherCard";
 import Dropdown from "./Dropdown";
 
 
-const user = { username: "AvidThinker"}
+const thisUser = "avidThinker"
 
 function App() {
 const [philosophers, setPhilosophers] = useState([])
 const [philosopher, setPhilosopher] = useState({})
 const [selected, setSelected] = useState("Diogenes")
 const [quotes, setQuotes] = useState([])
+
 
 
 useEffect(() => {
@@ -39,7 +40,6 @@ useEffect(() => {
 }, [philosopher])
 
 
-
 function consoleLog() {
   console.log(philosophers)
   console.log(philosopher)
@@ -60,7 +60,7 @@ function consoleLog() {
       <Dropdown   philosophers={philosophers} setSelected={setSelected} philosopher={philosopher}/>
       
       
-      <PhilosopherCard philosopher={philosopher} quotes={quotes} />
+      <PhilosopherCard key={indexedDB} philosopher={philosopher} quotes={quotes} thisUser={thisUser}/>
     
     </div>
   );

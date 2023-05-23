@@ -3,6 +3,7 @@ Philosopher.delete_all
 Origin.delete_all
 Era.delete_all
 Quote.delete_all
+Comment.delete_all
 
 diogenes = Philosopher.create(name: "Diogenes")
 socrates = Philosopher.create(name: "Socrates")
@@ -180,7 +181,7 @@ parmenides.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2
 zeno.update(img: "https://i.kinja-img.com/gawker-media/image/upload/q_75,w_1100,h_619/87877c7681082aab9cfbe4e7074e26a4.jpg")
 antisthenes.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Antisthenes_Pio-Clementino_Inv288.jpg/220px-Antisthenes_Pio-Clementino_Inv288.jpg")
 
-diogenes_comment_1 = Comment.create(comment: "My eyes are now open.", quote_id: diogenes_quote_1.id)
+diogenes_comment_1 = Comment.create(comment: "My eyes are now open.", quote_id: diogenes_quote_1.id, user: "TheGrungler")
 
 
 

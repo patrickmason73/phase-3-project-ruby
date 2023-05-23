@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_21_024107) do
+ActiveRecord::Schema.define(version: 2023_05_23_042725) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.integer "quote_id"
+    t.string "user"
   end
 
   create_table "eras", force: :cascade do |t|

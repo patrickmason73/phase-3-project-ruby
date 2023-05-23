@@ -19,16 +19,14 @@ class ApplicationController < Sinatra::Base
     post '/comments' do
         new_comment = Comment.create({
             comment: (params[:comment]), 
-            quote_id: (params[:quote_id])
+            quote_id: (params[:quote_id]),
+            user: (params[:user])
         })
         new_comment.to_json
     end
 
-    patch '/comments/:id' do
-        comment = Comment.find(params[:id])
-        comment.update({
-            comment: (params[:comment])
-        })
-        comment.to_json
+    get '/comments/:quote_id' do
+        comments = Comment.where(quote_id: params[:quote_id])
+        comments.to_json
     end
 end

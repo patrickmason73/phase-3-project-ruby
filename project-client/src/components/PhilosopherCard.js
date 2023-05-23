@@ -2,13 +2,16 @@ import React, {useState} from "react";
 import Comment from "./Comment";
 
 
-function PhilosopherCard({ philosopher, quotes }) {
+function PhilosopherCard({ philosopher, quotes, thisUser }) {
+
+    
+
 
     const displayQuotes = quotes.map((quote) => {
         return (
             <>
             <p key={quote.id}>"{quote.quote}"</p>
-            <Comment key={quote.id}/>
+            <Comment key={indexedDB} quote={quote} thisUser={thisUser}/>
             </>
         )
     })

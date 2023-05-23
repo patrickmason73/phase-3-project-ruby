@@ -171,6 +171,17 @@ ancient_greek.quotes = [diogenes_quote_1, diogenes_quote_2, diogenes_quote_3, so
 plato_quote_1, plato_quote_2, xenophon_quote_1, xenophon_quote_2, antisthenes_quote_1, antisthenes_quote_2, aristotle_quote_1, aristotle_quote_2]
 pre_socratic.quotes = [zeno_quote_1, zeno_quote_2, parmenides_quote_1, parmenides_quote_2]
 
+diogenes.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Diogenes-statue-Sinop-enhanced.jpg/220px-Diogenes-statue-Sinop-enhanced.jpg")
+socrates.update(img: "https://socratesinthecityaudio.s3.amazonaws.com/wp-content/uploads/2017/12/07171556/Socrates-businessinsider-620x480.jpg")
+plato.update(img: "https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_700/MTgwMDE1OTM1MjA4NjI5Mzcw/the-ancient-greek-philosopher-plato-his-life-and-works.webp")
+aristotle.update(img: "https://i0.wp.com/educationalrenaissance.com/wp-content/uploads/2019/03/raphael_detail-aristotle-from-the-school-of-athens.jpg?resize=880%2C660&ssl=1")
+xenophon.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Xenophon.jpg/220px-Xenophon.jpg")
+parmenides.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Sanzio_01_Parmenides.jpg/251px-Sanzio_01_Parmenides.jpg?20200907205238")
+zeno.update(img: "https://i.kinja-img.com/gawker-media/image/upload/q_75,w_1100,h_619/87877c7681082aab9cfbe4e7074e26a4.jpg")
+antisthenes.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Antisthenes_Pio-Clementino_Inv288.jpg/220px-Antisthenes_Pio-Clementino_Inv288.jpg")
+
+diogenes_comment_1 = Comment.create(comment: "My eyes are now open.", quote_id: diogenes_quote_1.id)
+
 
 
 puts "✅ Done seeding!"

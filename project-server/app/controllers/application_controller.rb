@@ -6,14 +6,14 @@ class ApplicationController < Sinatra::Base
         philosophers.to_json
     end
 
-    get '/philosophers/:id' do 
-        philosopher = Philosopher.find(params[:id])
+    get '/philosophers/:name' do 
+        philosopher = Philosopher.find_by(name: (params[:name]))
         philosopher.to_json
     end
 
-    get '/quote/comments' do
-        comments = Comment.find_by(params[:quote_id])
-        comments.to_json
+    get '/quotes/:philosopher_id' do
+        quotes = Quote.where(philosopher_id: (params[:philosopher_id]))
+        quotes.to_json
     end
 
     post '/comments' do

@@ -60,7 +60,7 @@ function consoleLog() {
       <Dropdown   philosophers={philosophers} setSelected={setSelected} philosopher={philosopher}/>
       
       
-      <PhilosopherCard key={indexedDB} philosopher={philosopher} quotes={quotes} thisUser={thisUser}/>
+      <PhilosopherCard key={indexedDB} philosopher={philosopher} quotes={quotes} thisUser={thisUser} selected={selected}/>
     
     </div>
   );

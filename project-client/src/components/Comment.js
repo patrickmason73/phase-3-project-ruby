@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-function Comment({ quote, thisUser }) {
+function Comment({ quote, thisUser, selected }) {
 
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState("")
@@ -10,6 +10,9 @@ function handleAddComment(comment) {
     setComments([...comments, comment])
 }
 
+useEffect(() => {
+    setGenerateComments(false)
+}, [selected])
 
 function handleSubmit(e) {
     e.preventDefault();

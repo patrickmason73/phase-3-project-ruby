@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Comment from "./Comment";
 
 
-function PhilosopherCard({ philosopher, quotes, thisUser }) {
+function PhilosopherCard({ philosopher, quotes, thisUser, selected }) {
 
     
 
@@ -11,7 +11,7 @@ function PhilosopherCard({ philosopher, quotes, thisUser }) {
         return (
             <>
             <p key={quote.id}>"{quote.quote}"</p>
-            <Comment key={indexedDB} quote={quote} thisUser={thisUser}/>
+            <Comment key={indexedDB} quote={quote} thisUser={thisUser} selected={selected}/>
             </>
         )
     })

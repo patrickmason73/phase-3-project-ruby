@@ -40,4 +40,12 @@ class ApplicationController < Sinatra::Base
         comment.destroy
         comment.to_json
     end
+
+    patch '/comments/:id' do
+        comment = Comment.find(params[:id])
+        comment.update({
+            comment: (params[:comment])
+        })
+        comment.to_json
+    end
 end

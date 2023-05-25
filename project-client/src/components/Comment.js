@@ -1,10 +1,16 @@
 import React, {useState, useEffect} from "react";
+import UpdateComment from "./UpdateComment";
 
 function Comment({ quote, thisUser, selected }) {
 
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState("")
 const [generateComments, setGenerateComments] = useState(false)
+const [editComment, setEditComment] = useState(false)
+
+
+
+
 
 function handleAddComment(comment) {
     setComments([...comments, comment])
@@ -44,14 +50,38 @@ function handleClick() {
     }
 
 
+function handleEditComment(updatedComment) {
+    const editedComments = comments.map((comment) => {
+        if (comment.id === updatedComment.id) {
+            return updatedComment;
+        } else {
+            return comment;
+        }
+        })
+        setComments(editedComments)
+}
 
+function handleEditedComments(updatedComment) {
+    setEditComment(false);
+    handleEditComment(updatedComment);
+}
 
 const displayComments = comments.map((comment) => {
+    const currentUser = thisUser === comment.user
+    
     return (
         <div>
+        <span>
             {comment.user}:
 
             {comment.comment}
+        </span>
+        <>
+        {editComment && currentUser ? (<UpdateComment comment={comment} handleEditedComments={handleEditedComments} />) 
+        : null}
+        </>
+        {currentUser ? (
+            <div>
         <button value={comment.id} onClick={(e) => {
               fetch(`http://localhost:9292/comments/${e.target.value}`, {
                 method: "DELETE",
@@ -63,7 +93,11 @@ const displayComments = comments.map((comment) => {
             setComments(updatedComments)
                 
         }}>DELETE COMMENT</button>
-           </div>
+        <button onClick={() => setEditComment(current => !current)}>{editComment ? "CANCEL" : "EDIT"}</button>
+      
+        </div>
+        ) : null}
+        </div>
     )})
 
 

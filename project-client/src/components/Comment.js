@@ -9,7 +9,18 @@ const [generateComments, setGenerateComments] = useState(false)
 const [editComment, setEditComment] = useState(false)
 
 
+const quoteStyle = {
+    padding: "1em",
+    display: "grid",
+    placeItems: "center",
+    backgroundColor: "#D3D3D3"
+}
 
+const commentStyle = {
+    padding: "1em",
+    display: "grid",
+   
+}
 
 
 function handleAddComment(comment) {
@@ -71,10 +82,8 @@ const displayComments = comments.map((comment) => {
     
     return (
         <div>
-        <span>
-            {comment.user}:
-
-            {comment.comment}
+        <span style={commentStyle}>
+          <p><strong>{comment.user}</strong>:  {comment.comment}</p>
         </span>
         <>
         {editComment && currentUser ? (<UpdateComment comment={comment} handleEditedComments={handleEditedComments} />) 
@@ -104,7 +113,7 @@ const displayComments = comments.map((comment) => {
       
 
     return (
-        <div>   
+        <div style={quoteStyle}>   
             <button onClick={handleClick}>{generateComments ? "Close Comments" : "Generate Comments"}</button>
             <div>{generateComments ? [displayComments] : null}</div>
             <form onSubmit={handleSubmit}>

@@ -1,5 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 
+const dropStyle = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",  
+}
 
 function Dropdown({ philosophers, setSelected }) {
     
@@ -16,7 +21,7 @@ function Dropdown({ philosophers, setSelected }) {
 
 
 return (
-    <div>
+    <div style={dropStyle}>
     <select onChange={e => onChange(e)}>
         {philosophers.map((p) => (
             <option key={p.id} value={p.name}>{p.name}</option>

@@ -12,6 +12,10 @@ const [philosophers, setPhilosophers] = useState([])
 const [philosopher, setPhilosopher] = useState({})
 const [selected, setSelected] = useState("Diogenes")
 const [quotes, setQuotes] = useState([])
+const [origin, setOrigin] = useState({
+  id: 79,
+  name: "Athens",
+})
 
 
 
@@ -39,18 +43,21 @@ useEffect(() => {
   .then((data) => setQuotes(data))
 }, [philosopher])
 
+useEffect(() => {
+  fetch(`http://localhost:9292/origins/${philosopher.origin_id}`)
+  .then(r => r.json())
+  .then((data) => setOrigin(data))
+}, [philosopher])
+
+
 
 function consoleLog() {
   console.log(philosophers)
   console.log(philosopher)
   console.log(quotes)
+  console.log(origin.name)
 }
 
-// useEffect(() => {
-//   fetch("http://localhost:9292/quotes")
-//   .then((r) => r.json())
-//   .then((quotes) => setQuotes(quotes))
-// }, [])
 
 
   return (
@@ -60,7 +67,7 @@ function consoleLog() {
       <Dropdown   philosophers={philosophers} setSelected={setSelected} philosopher={philosopher}/>
       
       
-      <PhilosopherCard key={indexedDB} philosopher={philosopher} quotes={quotes} thisUser={thisUser} selected={selected}/>
+      <PhilosopherCard key={philosopher.id} philosopher={philosopher} quotes={quotes} thisUser={thisUser} selected={selected} origin={origin} />
     
     </div>
   );

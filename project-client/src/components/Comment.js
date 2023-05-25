@@ -44,19 +44,30 @@ function handleClick() {
     }
 
 
+
+
 const displayComments = comments.map((comment) => {
     return (
         <div>
             {comment.user}:
 
             {comment.comment}
-
+        <button value={comment.id} onClick={(e) => {
+              fetch(`http://localhost:9292/comments/${e.target.value}`, {
+                method: "DELETE",
+            });
+            comment.user = null
+            comment.comment = null
+            e.target = null
+            const updatedComments = comments.filter((comment2) => comment2.id !== comment.id)
+            setComments(updatedComments)
+                
+        }}>DELETE COMMENT</button>
            </div>
     )})
 
 
-
-
+      
 
     return (
         <div>   

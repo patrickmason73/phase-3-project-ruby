@@ -29,4 +29,15 @@ class ApplicationController < Sinatra::Base
         comments = Comment.where(quote_id: params[:quote_id])
         comments.to_json
     end
+
+    get '/origins/:origin_id' do 
+        origin = Origin.find_by(id: (params[:origin_id]))
+        origin.to_json
+    end
+
+    delete '/comments/:id' do
+        comment = Comment.find(params[:id])
+        comment.destroy
+        comment.to_json
+    end
 end

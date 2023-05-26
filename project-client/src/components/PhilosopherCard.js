@@ -11,6 +11,8 @@ const imgStyle = {
     margin: "0 auto",
     width: "40%",
     height: "70%",
+    borderRadius: "8px",
+    filter: "drop-shadow(8px 8px 10px black)"
 }
 
 const quoteStyle = {

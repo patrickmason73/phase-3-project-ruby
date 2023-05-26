@@ -9,7 +9,8 @@ const headerStyle = {
 const secondHeaderStyle = {
     display: "grid",
     placeItems: "center",
-    fontSize: "150%"
+    fontSize: "150%",
+    backgroundColor: "#add8e6",
 }
 
 function Header() {

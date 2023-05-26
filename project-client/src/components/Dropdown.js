@@ -1,10 +1,8 @@
 import React from "react";
 
 const dropStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center", 
-   
+    display: "grid",
+    placeItems: "center",
 }
 
 const selectStyle = {

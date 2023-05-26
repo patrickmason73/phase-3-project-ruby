@@ -51,19 +51,19 @@ useEffect(() => {
 
 
 
-function consoleLog() {
-  console.log(philosophers)
-  console.log(philosopher)
-  console.log(quotes)
-  console.log(origin.name)
-}
+// function consoleLog() {
+//   console.log(philosophers)
+//   console.log(philosopher)
+//   console.log(quotes)
+//   console.log(origin.name)
+// }
 
 
 
   return (
     <div className="App">
       <Header />
-      <button onClick={consoleLog}>console.log</button>
+      {/* <button onClick={consoleLog}>console.log</button> */}
       <Dropdown   philosophers={philosophers} setSelected={setSelected} philosopher={philosopher}/>
       
       

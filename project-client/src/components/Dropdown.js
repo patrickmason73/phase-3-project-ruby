@@ -3,9 +3,15 @@ import React from "react";
 const dropStyle = {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",  
+    justifyContent: "center", 
+   
 }
 
+const selectStyle = {
+    fontSize: "140%", 
+    backgroundColor: "DodgerBlue",
+    color: "#FFFFFF"
+}
 function Dropdown({ philosophers, setSelected }) {
     
 
@@ -22,7 +28,7 @@ function Dropdown({ philosophers, setSelected }) {
 
 return (
     <div style={dropStyle}>
-    <select onChange={e => onChange(e)}>
+    <select style={selectStyle} onChange={e => onChange(e)}>
         {philosophers.map((p) => (
             <option key={p.id} value={p.name}>{p.name}</option>
             ))}

@@ -17,6 +17,7 @@ const quoteStyle = {
     padding: "1em",
     display: "grid",
     placeItems: "center",
+    fontSize: "130%",
 }
 function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
 
@@ -27,17 +28,18 @@ function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
         return (
             <>
             <div>
-            <p key={quote.id} style={quoteStyle}>"{quote.quote}"</p>
-            </div>
+            <p key={quote.id} style={quoteStyle}><strong>"{quote.quote}"</strong></p>
+            
 
             <Comment quote={quote} thisUser={thisUser} selected={selected}/>
+            </div>
             </>
         )
     })
 
     return (
         <div key={philosopher.id} style={cardStyle}>
-            <p style={quoteStyle}>{philosopher.name} of {origin ? origin.name : ''}</p>
+            <p style={quoteStyle}><strong>{philosopher.name} of {origin ? origin.name : ''}</strong></p>
 
             <img src={philosopher.img} alt={philosopher.name} style={imgStyle}></img>
 

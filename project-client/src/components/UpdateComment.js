@@ -1,5 +1,17 @@
 import React, {useState} from "react";
 
+const textBoxStyle = {
+    width: "200%",
+    height: "2em",
+    display: "grid",
+    placeItems: "center",
+}
+
+const saveButtonStyle = {
+    margin: ".5em"
+}
+
+
 function UpdateComment({ comment, handleEditedComments }) {
 
 const [commentText, setCommentText] = useState(comment.comment)
@@ -22,13 +34,14 @@ const [commentText, setCommentText] = useState(comment.comment)
     return (
         <form onSubmit={handleSubmit}>
         <input
+        style={textBoxStyle}
         type="text"
         name="body"
         autoComplete="off"
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
         />
-        <button type="submit">SAVE</button>
+        <button style={saveButtonStyle} type="submit">SAVE</button>
         </form>
     )
 }

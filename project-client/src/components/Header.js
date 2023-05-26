@@ -1,9 +1,25 @@
 import React from "react";
 
+const headerStyle = {
+    display: "grid",
+    placeItems: "center",
+    fontSize: "200%"
+}
+
+const secondHeaderStyle = {
+    display: "grid",
+    placeItems: "center",
+    fontSize: "150%"
+}
+
 function Header() {
 
     return (
-        <p>MY PHILOSOPHY DATABASE</p>
+        <>
+        <p style={headerStyle}><strong>WELCOME TO MY PHILOSOPHER DATABASE</strong></p>
+        <p style={secondHeaderStyle}>Choose A Philosopher From The Dropdown Menu, Scroll Down To See Their Quotes!</p>
+        <p style={secondHeaderStyle}>If You Like Any Quotes, Feel Free To Leave A Comment!</p>
+        </>
     )
 }
 

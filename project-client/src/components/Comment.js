@@ -11,7 +11,7 @@ const quoteStyle = {
 
 const commentStyle = {
     display: "grid",
-   
+    placeItems: "center",
 }
 
 const buttonStyle = {
@@ -176,7 +176,7 @@ const displayComments = comments.map((comment) => {
     const currentUser = thisUser === comment.user
     
     return (
-        <div>
+        <div key={comment.id}>
         <li style={listingStyle}>
         <span style={commentStyle}>
           <p><strong>{comment.user}</strong>:  {comment.comment}</p>
@@ -217,6 +217,7 @@ const displayComments = comments.map((comment) => {
             <div>{generateComments ? [displayComments] : null}</div>
             <form onSubmit={handleSubmit}>
                 <input
+                    maxLength={72}
                     style={postCommentStyle}
                     type="text"
                     name="newComment"

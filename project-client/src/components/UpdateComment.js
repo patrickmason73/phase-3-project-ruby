@@ -34,6 +34,7 @@ const [commentText, setCommentText] = useState(comment.comment)
     return (
         <form onSubmit={handleSubmit}>
         <input
+        maxLength={72}
         style={textBoxStyle}
         type="text"
         name="body"

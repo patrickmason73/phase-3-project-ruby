@@ -28,14 +28,11 @@ function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
 
     const displayQuotes = quotes.map((quote) => {
         return (
-            <>
-            <div>
-            <p key={quote.id} style={quoteStyle}><strong>"{quote.quote}"</strong></p>
+            <div key={quote.id}>
+            <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
             
-
             <Comment quote={quote} thisUser={thisUser} selected={selected}/>
             </div>
-            </>
         )
     })
 

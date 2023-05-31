@@ -17,13 +17,18 @@ Clicking the 'Generate Comments' button with show the comments for a specific qu
 This app works by using Ruby (Active Record + Sinatra + Rake) for the backend database, and React for the frontend. The frontend makes fetch requests to backend server at localhost:9292.
 
 Backend:
+
+
 ![Backend_Routes](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20routes%20cap.PNG)
 
 Frontend:
+
 ![app](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20frontend%20cap%20useEffect.PNG)
 
 Post/Patch:
+
 ![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)
+
 ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
 
 

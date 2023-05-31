@@ -33,4 +33,6 @@ Post/Patch:
 # Credits
 
 [Wikipedia](https://www.wikipedia.org/) - Used to gather information on each philosopher, including images, quotes, and life story.
+
+
 [Brainy Quote](https://www.brainyquote.com/) - Used to obtain more quotes from each philosopher.

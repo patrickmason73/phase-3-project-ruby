@@ -4,7 +4,7 @@ This app I created hosts a database of Greek philosophers which includes some qu
 
 # App uses
 
-Turn on the database within the server directory using "bundle exec rake server" and start the app by running 
+Turn on the database within the server directory entering "bundle exec rake server" into your terminal and start the app by running npm start within the client directory terminal. 
 
 Use the dropdown box to select a philospher, the page will respond with an image of the philospher, along with where they are from and some quotes said by them. 
 
@@ -27,9 +27,7 @@ Frontend:
 
 Post/Patch:
 
-![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)
-
-![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
+![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)    ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
 
 
 # Credits

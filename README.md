@@ -1,6 +1,6 @@
 # Phase-3-Project-Ruby
 
-This app I created hosts a database of Greek philosophers which includes some quotes said but them as well as where they are from and their era of existence. There is a comment section as well if anyone wants to comment on any of the quotes they may do so, and they may edit/delete their own comments. 
+This app I created hosts a database of Greek philosophers which includes some quotes said by them as well as where they are from and their era of existence. There is a comment section as well if anyone wants to comment on any of the quotes they may do so, and they may edit/delete their own comments. 
 
 # App uses
 

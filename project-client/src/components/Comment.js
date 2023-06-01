@@ -105,15 +105,14 @@ const saveButtonStyle = {
 
 function Comment({ quote, thisUser, selected }) {
 
+
 const [comments, setComments] = useState([])
 const [newComment, setNewComment] = useState("")
 const [generateComments, setGenerateComments] = useState(false)
 const [editComment, setEditComment] = useState(false)
 
 useEffect(() => {
-    fetch(`http://localhost:9292/comments/${quote.id}`)
-    .then(r => r.json())
-    .then((data) => setComments(data))
+setComments(quote.comments)
 }, [generateComments])
 
 

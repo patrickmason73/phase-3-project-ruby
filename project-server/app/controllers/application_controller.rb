@@ -1,20 +1,20 @@
 class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'
   
-    get '/philosophers' do 
-        philosophers = Philosopher.all
-        philosophers.to_json
-    end
+    # get '/philosophers' do 
+    #     philosophers = Philosopher.all
+    #     philosophers.to_json
+    # end
 
     get '/philosophers/:name' do 
         philosopher = Philosopher.find_by(name: (params[:name]))
-        philosopher.to_json
+       json_format(philosopher)
     end
 
-    get '/quotes/:philosopher_id' do
-        quotes = Quote.where(philosopher_id: (params[:philosopher_id]))
-        quotes.to_json
-    end
+    # get '/quotes/:philosopher_id' do
+    #     quotes = Quote.where(philosopher_id: (params[:philosopher_id]))
+    #     quotes.to_json
+    # end
 
     post '/comments' do
         new_comment = Comment.create({
@@ -25,15 +25,15 @@ class ApplicationController < Sinatra::Base
         new_comment.to_json
     end
 
-    get '/comments/:quote_id' do
-        comments = Comment.where(quote_id: params[:quote_id])
-        comments.to_json
-    end
+    # get '/comments/:quote_id' do
+    #     comments = Comment.where(quote_id: params[:quote_id])
+    #     comments.to_json
+    # end
 
-    get '/origins/:origin_id' do 
-        origin = Origin.find_by(id: (params[:origin_id]))
-        origin.to_json
-    end
+    # get '/origins/:origin_id' do 
+    #     origin = Origin.find_by(id: (params[:origin_id]))
+    #     origin.to_json
+    # end
 
     delete '/comments/:id' do
         comment = Comment.find(params[:id])
@@ -47,5 +47,9 @@ class ApplicationController < Sinatra::Base
             comment: (params[:comment])
         })
         comment.to_json
+    end
+
+    def json_format(philosopher)
+        philosopher.to_json(include: [{quotes: {include: :comments}}, :origin])
     end
 end

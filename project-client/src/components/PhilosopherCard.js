@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Comment from "./Comment";
 
 const cardStyle = {
@@ -23,22 +23,22 @@ const quoteStyle = {
 }
 function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
 
+      const {id, name, origin_id, era_id, img} = philosopher
       
-    
 
     const displayQuotes = quotes.map((quote) => {
         return (
             <div key={quote.id}>
             <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
             
-            <Comment quote={quote} thisUser={thisUser} selected={selected}/>
+            <Comment quote={quote} thisUser={thisUser} selected={selected} />
             </div>
         )
     })
 
     return (
-        <div key={philosopher.id} style={cardStyle}>
-            <p style={quoteStyle}><strong>{philosopher.name} of {origin ? origin.name : ''}</strong></p>
+        <div key={id} style={cardStyle}>
+            <p style={quoteStyle}><strong>{name} of {origin ? origin.name : ''}</strong></p>
 
             <img src={philosopher.img} alt={philosopher.name} style={imgStyle}></img>
 

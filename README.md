@@ -19,15 +19,15 @@ This app works by using Ruby (Active Record + Sinatra + Rake) for the backend da
 Backend:
 
 
-![Backend_Routes](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20routes%20cap.PNG)
+![Backend_Routes](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20routes%20cap%20improved.PNG)
 
 Frontend:
 
-![app](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20frontend%20cap%20useEffect.PNG)
+![app](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20frontend%20cap%20useEffect%20imporve.PNG)
 
 Post/Patch:
 
-![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)    ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
+![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)       ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
 
 
 # Credits

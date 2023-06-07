@@ -21,9 +21,9 @@ const quoteStyle = {
     placeItems: "center",
     fontSize: "130%",
 }
-function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
+function PhilosopherCard({ philosopher, thisUser, selected }) {
 
-      const {id, name, origin_id, era_id, img} = philosopher
+    const {id, name, origin, era_id, img, quotes} = philosopher
       
 
     const displayQuotes = quotes.map((quote) => {
@@ -31,7 +31,7 @@ function PhilosopherCard({ philosopher, quotes, thisUser, selected, origin }) {
             <div key={quote.id}>
             <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
             
-            <Comment quote={quote} thisUser={thisUser} selected={selected} />
+            <Comment quote={quote} thisUser={thisUser} selected={selected} comments={quote.comments}/>
             </div>
         )
     })

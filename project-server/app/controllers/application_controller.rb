@@ -1,9 +1,9 @@
 class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'
 
-    get '/philosophers/:name' do 
-        philosopher = Philosopher.find_by(name: (params[:name]))
-       json_format(philosopher)
+    get '/philosophers' do 
+        philosophers = Philosopher.all
+       json_format(philosophers)
     end
 
     post '/comments' do
@@ -29,7 +29,7 @@ class ApplicationController < Sinatra::Base
         comment.to_json
     end
 
-    def json_format(philosopher)
-        philosopher.to_json(include: [{quotes: {include: :comments}}, :origin])
+    def json_format(philosophers)
+        philosophers.to_json(include: [{quotes: {include: :comments}}, :origin])
     end
 end

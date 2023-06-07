@@ -3,6 +3,7 @@ import Header from "./Header";
 
 import PhilosopherCard from "./PhilosopherCard";
 import Dropdown from "./Dropdown";
+import FunFacts from "./FunFacts";
 
 
 const thisUser = "avidThinker"
@@ -58,21 +59,41 @@ useEffect(() => {
 //   .then((data) => setOrigin(data))
 // }, [philosopher])
 
-
-
-function consoleLog() {
-  console.log(philosophers)
-  // console.log(philosopher)
-  // console.log(quotes)
-  // console.log(origin.name)
+function handleDeleteFact(philosopherId, factId) {
+  const philosopherToUpdate = philosophers.find((philosopher) => philosopher.id === philosopherId)
+  const upddatedPhilosophers = philosophers.map((philosopher) => {
+    if (philosopher === philosopherToUpdate)
+      return {
+        ...philosopherToUpdate,
+        fun_facts: philosopher.fun_facts.filter((fact) => {
+          return fact.id !== factId
+        })
+      }
+      else {return philosopher}
+  })
+  setPhilosophers(upddatedPhilosophers)
 }
+
+// function consoleLog() {
+//   console.log(philosophers)
+//   // console.log(philosopher)
+//   // console.log(quotes)
+//   // console.log(origin.name)
+// }
 
 
   return (
     <div className="App">
       <Header />
-      <button onClick={consoleLog}>console.log</button>
+      {/* <button onClick={consoleLog}>console.log</button> */}
+
       <Dropdown   setSelected={setSelected}/>
+
+     {philosophers.length > 0 && <FunFacts philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact}/>}
+
+
+
+     
       
       
     {philosophers.length > 0 && <PhilosopherCard philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} selected={selected} />}

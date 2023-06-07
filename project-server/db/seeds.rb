@@ -183,6 +183,6 @@ antisthenes.update(img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/
 
 diogenes_comment_1 = Comment.create(comment: "My eyes are now open.", quote_id: diogenes_quote_1.id, user: "TheGrungler")
 
-
+diogenes_fun_fact_1 = FunFact.create(fact: "Diogenes often slept inside a ceramic jar in the marketplace.", user: "TheGrungler", philosopher_id: diogenes.id)
 
 puts "✅ Done seeding!"

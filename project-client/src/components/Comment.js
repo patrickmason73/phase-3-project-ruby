@@ -106,14 +106,14 @@ const saveButtonStyle = {
 function Comment({ quote, thisUser, selected }) {
 
 
-const [comments, setComments] = useState([])
+const [comments, setComments] = useState(quote.comments)
 const [newComment, setNewComment] = useState("")
 const [generateComments, setGenerateComments] = useState(false)
 const [editComment, setEditComment] = useState(false)
 
-useEffect(() => {
-setComments(quote.comments)
-}, [generateComments])
+// useEffect(() => {
+// setComments(quote.comments)
+// }, [generateComments])
 
 
 
@@ -194,8 +194,8 @@ const displayComments = comments.map((comment) => {
             comment.user = null
             comment.comment = null
             e.target = null
-            const updatedComments = comments.filter((comment2) => comment2.id !== comment.id)
-            setComments(updatedComments)
+             const updatedComments = comments.filter((comment2) => comment2.id !== comment.id)
+             setComments(updatedComments)
                 
         }}>DELETE COMMENT</button>
         <button style={editButtonStyle} onClick={() => setEditComment(current => !current)}>{editComment ? "CANCEL" : "EDIT"}</button>

@@ -23,15 +23,16 @@ const quoteStyle = {
 }
 function PhilosopherCard({ philosopher, thisUser, selected }) {
 
-    const {id, name, origin, era_id, img, quotes} = philosopher
+    const {id, name, origin, img, quotes} = philosopher
       
 
     const displayQuotes = quotes.map((quote) => {
         return (
             <div key={quote.id}>
             <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
+
             
-            <Comment quote={quote} thisUser={thisUser} selected={selected} comments={quote.comments}/>
+            <Comment quote={quote} thisUser={thisUser} selected={selected} />
             </div>
         )
     })
@@ -40,7 +41,7 @@ function PhilosopherCard({ philosopher, thisUser, selected }) {
         <div key={id} style={cardStyle}>
             <p style={quoteStyle}><strong>{name} of {origin ? origin.name : ''}</strong></p>
 
-            <img src={philosopher.img} alt={philosopher.name} style={imgStyle}></img>
+            <img src={img} alt={name} style={imgStyle}></img>
 
             {displayQuotes}
         </div>

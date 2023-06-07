@@ -11,6 +11,10 @@ const factStyle = {
     paddingBottom: "6px",
 }
 
+const fullStyle = {
+    backgroundColor: "#add8e6"
+}
+
 function FunFacts({ philosopher, thisUser, handleDeleteFact }) {
 
 const [newFact, setNewFact] = useState("")
@@ -57,7 +61,7 @@ function handleSubmit(e) {
     })
 }
     return (
-        <div>
+        <div style={fullStyle}>
             <header style={headerStyle}><strong>Fun Facts About {philosopher.name} (Periodically Reviewed By Me)</strong></header>
 
              {displayFunFacts}

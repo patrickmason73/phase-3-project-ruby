@@ -3,6 +3,7 @@ import React from "react";
 const dropStyle = {
     display: "grid",
     placeItems: "center",
+    paddingBottom: "10px",
 }
 
 const selectStyle = {

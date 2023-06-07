@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import UpdateComment from "./UpdateComment";
 
+
 const quoteStyle = {
     paddingTop: ".5em",
     paddingBottom: "2em",

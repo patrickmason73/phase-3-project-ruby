@@ -6,11 +6,11 @@ This app I created hosts a database of Greek philosophers which includes some qu
 
 Turn on the database within the server directory entering "bundle exec rake server" into your terminal and start the app by running npm start within the client directory terminal. 
 
-Use the dropdown box to select a philospher, the page will respond with an image of the philospher, along with where they are from and some quotes said by them. 
+Use the dropdown box to select a philospher, the page will respond with an image of the philospher, along with where they are from and some quotes said by them. Also, above all of that there is a spot to post any fun facts you may know about a given philosopher!
 
 Clicking the 'Generate Comments' button with show the comments for a specific quote. Within the comments you may add/edit/delete your own comments, but not those that belong to a different user.
 
-![Alt Text](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/philosopherAppGif.gif?raw=true)
+![Alt Text](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/philosopherAppGifNeww.gif)
 
 # Code
 
@@ -19,15 +19,19 @@ This app works by using Ruby (Active Record + Sinatra + Rake) for the backend da
 Backend:
 
 
-![Backend_Routes](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20routes%20cap%20improved.PNG)
+![Backend_Routes](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/backend%20replacement.PNG)
 
-Frontend:
+Frontend Get Request:
 
-![app](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20frontend%20cap%20useEffect%20imporve.PNG)
+![app](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/useEffect%20replacement.PNG)
 
-Post/Patch:
+Fun Facts Post/Delete:
 
-![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20post%20cap.PNG)       ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/phase%203%20patch%20cap.PNG)
+![factP](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/fun%20fact%20create%20and%20delete.PNG)
+
+Comments Post/Patch/Delete:
+
+![post](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/comment%20post.PNG)       ![patch](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/comment%20patch.PNG)     ![delete](https://github.com/patrickmason73/phase-3-project-ruby/blob/main/comment%20delete.PNG)
 
 
 # Credits

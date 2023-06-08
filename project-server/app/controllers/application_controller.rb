@@ -21,6 +21,14 @@ class ApplicationController < Sinatra::Base
         fact.to_json
     end
 
+    patch '/fun_facts/:id' do 
+        fact = FunFact.find(params[:id])
+        fact.update({
+            fact: (params[:fact])
+        })
+        fact.to_json
+    end
+
     post '/comments' do
         new_comment = Comment.create({
             comment: (params[:comment]), 

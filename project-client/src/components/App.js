@@ -74,6 +74,44 @@ function handleDeleteFact(philosopherId, factId) {
   setPhilosophers(upddatedPhilosophers)
 }
 
+function handleUpdateFact(factToUpdate, formData) {
+  const philosopherToUpdate = philosophers.find((philosopher) => philosopher.id === factToUpdate.philosopher_id)
+  const philoFactToUpdate = philosopherToUpdate.fun_facts.find((fact) => fact.id === factToUpdate.id)
+  fetch(`http://localhost:9292/fun_facts/${factToUpdate.id}`, {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json',
+        Accept: 'application/json'
+    },
+    body: JSON.stringify({
+      fact: formData,
+    })
+  })
+  .then(r => r.json())
+  .then((data) => {
+    setPhilosophers(philosophers.map((philosopher) => {
+      if (philosopher === philosopherToUpdate) {
+        return {  
+          ...philosopherToUpdate,
+          fun_facts: philosopher.fun_facts.map((item) => {
+
+            if (item === philoFactToUpdate) {
+
+            return { ...philoFactToUpdate, fact: data.fact }; 
+              }  else {
+              return item;
+            }
+          })
+          }}
+        else {
+          return philosopher
+        }
+    }))}
+    )
+    
+console.log(philosopherToUpdate)
+}
+
 // function consoleLog() {
 //   console.log(philosophers)
 //   // console.log(philosopher)
@@ -89,7 +127,7 @@ function handleDeleteFact(philosopherId, factId) {
 
       <Dropdown   setSelected={setSelected}/>
 
-     {philosophers.length > 0 && <FunFacts philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact}/>}
+     {philosophers.length > 0 && <FunFacts philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact} handleUpdateFact={handleUpdateFact} />}
 
 
 

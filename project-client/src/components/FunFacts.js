@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import UpdateFunFact from "./UpdateFunFact";
 
 const headerStyle = {
     fontSize: "150%",
@@ -15,7 +16,10 @@ const fullStyle = {
     backgroundColor: "#add8e6"
 }
 
-function FunFacts({ philosopher, thisUser, handleDeleteFact }) {
+function FunFacts({ philosopher, thisUser, handleDeleteFact, handleUpdateFact }) {
+
+
+const [editing, setEditing] = useState(false)
 
 const [newFact, setNewFact] = useState("")
 
@@ -28,14 +32,26 @@ function handleDeleteClick(fact){
    handleDeleteFact(philosopher.id, fact.id)
 }
 
+
+
 const displayFunFacts = fun_facts.map((fact) => {
     const currentUser = thisUser === fact.user 
 
+  
+
     return (
         <div key={fact.id} style={factStyle}>
-        <li >{fact.user}:  <strong>{fact.fact}</strong>{currentUser ? (
+        <li >{fact.user}:  <strong>{fact.fact}</strong>
+        {currentUser && editing ? (<UpdateFunFact handleUpdateFact={handleUpdateFact} fact={fact} setEditing={setEditing}/>) : null}
+        {currentUser ? (
+            <>
             <button onClick={() => handleDeleteClick(fact)}>Delete</button>
-        ): null}</li>
+            <button onClick={() => setEditing(current => !current)}>{editing ? "CANCEL" : "EDIT"}</button>
+            </>
+        ): null}
+        
+        
+        </li>
         
         </div>
     )

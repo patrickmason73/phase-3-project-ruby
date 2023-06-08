@@ -13,7 +13,8 @@ const factStyle = {
 }
 
 const fullStyle = {
-    backgroundColor: "#add8e6"
+    backgroundColor: "#add8e6",
+    paddingTop: "5px"
 }
 
 function FunFacts({ philosopher, thisUser, handleDeleteFact, handleUpdateFact }) {
@@ -34,7 +35,9 @@ function handleDeleteClick(fact){
 
 
 
-const displayFunFacts = fun_facts.map((fact) => {
+const displayFunFacts = 
+(fun_facts ? 
+fun_facts.map((fact) => {
     const currentUser = thisUser === fact.user 
 
   
@@ -55,7 +58,7 @@ const displayFunFacts = fun_facts.map((fact) => {
         
         </div>
     )
-})
+}) :  null)
 
 function handleSubmit(e) {
     e.preventDefault()

@@ -33,7 +33,7 @@ function PhilosopherCard({ philosopher, thisUser, selected }) {
     const {id, name, origin, img, quotes} = philosopher
       
 
-    const displayQuotes = quotes.map((quote) => {
+    const displayQuotes = ( quotes ? quotes.map((quote) => {
         return (
             <div key={quote.id}>
             <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
@@ -43,10 +43,10 @@ function PhilosopherCard({ philosopher, thisUser, selected }) {
             </div>
         )
     })
-
+: null)
     return (
         <div key={id} style={cardStyle}>
-            <p style={headerStyle}><strong>{name} of {origin ? origin.name : ''}</strong></p>
+            <p style={headerStyle}><strong>{name} of {origin ? origin.name : 'Athens'}</strong></p>
 
             <img src={img} alt={name} style={imgStyle}></img>
 

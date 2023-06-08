@@ -6,6 +6,16 @@ class ApplicationController < Sinatra::Base
        json_format(philosophers)
     end
 
+    post '/philosophers' do
+        new_philosopher = Philosopher.create({
+            name: (params[:name]),
+            origin_id: (params[:origin_id]),
+            era_id: (params[:era_id]),
+            img: (params[:img]),
+        })
+        new_philosopher.to_json
+    end
+
     post '/fun_facts' do
         new_fact = FunFact.create({
             fact: (params[:fact]),

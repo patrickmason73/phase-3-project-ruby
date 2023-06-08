@@ -11,9 +11,11 @@ const selectStyle = {
     backgroundColor: "DodgerBlue",
     color: "#FFFFFF"
 }
-function Dropdown({ setSelected }) {
+function Dropdown({ setSelected, philosophers }) {
     
-    const philosophers = ["Diogenes", "Socrates", "Plato", "Aristotle", "Xenophon", "Parmenides", "Zeno", "Antisthenes"]
+    const philosopherNames = philosophers.map((philosopher) => {
+        return philosopher.name
+    })
 
     function onChange(e) {
         setSelected(e.target.value)    
@@ -28,7 +30,7 @@ function Dropdown({ setSelected }) {
 return (
     <div style={dropStyle}>
     <select style={selectStyle} onChange={e => onChange(e)}>
-        {philosophers.map((p) => (
+        {philosopherNames.map((p) => (
             <option key={p} value={p}>{p}</option>
             ))}
         {/* <option value="Diogenes">Diogenes</option>

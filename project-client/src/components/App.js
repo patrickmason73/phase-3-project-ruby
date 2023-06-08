@@ -4,9 +4,15 @@ import Header from "./Header";
 import PhilosopherCard from "./PhilosopherCard";
 import Dropdown from "./Dropdown";
 import FunFacts from "./FunFacts";
+import AddPhilosopher from "./AddPhilosopher";
 
 
 const thisUser = "avidThinker"
+
+const fullStyle = {
+  paddingTop: "5px",
+  paddingBottom: "5px"
+}
 
 function App() {
 const [philosophers, setPhilosophers] = useState([])
@@ -112,6 +118,21 @@ function handleUpdateFact(factToUpdate, formData) {
 console.log(philosopherToUpdate)
 }
 
+function handleAddPhilosopher(formData) {
+  fetch(`http://localhost:9292/philosophers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+    .then(res => res.json())
+    .then(philosopher => {
+      setPhilosophers([...philosophers, philosopher])
+    })
+}
+
 // function consoleLog() {
 //   console.log(philosophers)
 //   // console.log(philosopher)
@@ -125,7 +146,12 @@ console.log(philosopherToUpdate)
       <Header />
       {/* <button onClick={consoleLog}>console.log</button> */}
 
-      <Dropdown   setSelected={setSelected}/>
+      <Dropdown philosophers={philosophers} setSelected={setSelected}/>
+      
+       <AddPhilosopher handleAddPhilosopher={handleAddPhilosopher}/>
+
+
+
 
      {philosophers.length > 0 && <FunFacts philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact} handleUpdateFact={handleUpdateFact} />}
 

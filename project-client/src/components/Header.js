@@ -18,10 +18,10 @@ function Header() {
     return (
         <>
         <p style={headerStyle}><strong>WELCOME TO MY GREEK PHILOSOPHER DATABASE</strong></p>
-        <p style={secondHeaderStyle}>Choose A Philosopher From The Dropdown Menu, Scroll Down To See Their Quotes!</p>
-        <p style={secondHeaderStyle}>If You Like Any Quotes, Feel Free To Leave A Comment!</p>
-        <p style={secondHeaderStyle}>Know Something Interesting Or Fun About A Philosopher? Post A Fun Fact About Them!</p>
-        <p style={secondHeaderStyle}>I Will Allow You To Add A New GREEK Philosopher To This Database, Click The + Sign</p>
+
+        <p style={secondHeaderStyle}>Fun Facts Will Show You What Other Users Know About This Philosopher</p>
+        <p style={secondHeaderStyle}>Check Out Some Famous Quotes By This Philosopher!</p>
+        <p style={secondHeaderStyle}>Or Add A New GREEK Philosopher To The Database!</p>
         </>
     )
 }

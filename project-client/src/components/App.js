@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-
+import {Routes, Route } from 'react-router-dom';
 import PhilosopherCard from "./PhilosopherCard";
 import Dropdown from "./Dropdown";
 import FunFacts from "./FunFacts";
 import AddPhilosopher from "./AddPhilosopher";
+import Navbar from "./Navbar";
+import Quotes from "./Quotes";
 
 
 const thisUser = "avidThinker"
 
-const fullStyle = {
-  paddingTop: "5px",
-  paddingBottom: "5px"
+const secondHeaderStyle = {
+  display: "grid",
+  placeItems: "center",
+  fontSize: "150%",
+  backgroundColor: "#add8e6",
+}
+
+const divStyle = {
+  padding: "10px"
+}
+
+const divStyleNew = {
+  padding: "10px",
+  backgroundColor: "#add8e6",
 }
 
 function App() {
 const [philosophers, setPhilosophers] = useState([])
-// const [philosopher, setPhilosopher] = useState({
-//   id: 1,
-//   name: "Diogenes",
-//   origin_id: 79,
-//   era_id: 21,
-//   img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Diogenes-statue-Sinop-enhanced.jpg/220px-Diogenes-statue-Sinop-enhanced.jpg",
-// })
+
 const [selected, setSelected] = useState("Diogenes")
-// const [quotes, setQuotes] = useState([])
-// const [origin, setOrigin] = useState({
-//   id: 79,
-//   name: "Athens",
-// })
-
-
 
 
 useEffect(() => {
@@ -118,6 +118,39 @@ function handleUpdateFact(factToUpdate, formData) {
 console.log(philosopherToUpdate)
 }
 
+function handleAddFact(philosopher, newFact) {
+  fetch(`http://localhost:9292/fun_facts`, {
+    method: "POST",
+    headers: {
+        "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+        fact: newFact,
+        user: thisUser,
+        philosopher_id: philosopher.id,
+    }),
+})
+.then(r => r.json())
+.then((data) => {
+  setPhilosophers(philosophers.map((philo) => {
+    
+    if (philo === philosopher) {
+      return {
+        ...philosopher,
+        fun_facts: [...philosopher.fun_facts, data]
+      }} else {
+        return philo
+      }
+    
+  }))
+   
+})
+
+  
+
+}
+
+
 function handleAddPhilosopher(formData) {
   fetch(`http://localhost:9292/philosophers`, {
     method: 'POST',
@@ -130,6 +163,7 @@ function handleAddPhilosopher(formData) {
     .then(res => res.json())
     .then(philosopher => {
       setPhilosophers([...philosophers, philosopher])
+      setSelected(philosopher.name)
     })
 }
 
@@ -143,24 +177,51 @@ function handleAddPhilosopher(formData) {
 
   return (
     <div className="App">
-      <Header />
+    <p style={secondHeaderStyle}>Choose A Philosopher From The Dropdown Menu</p>
+    <Dropdown philosophers={philosophers} setSelected={setSelected} /> 
+      <Routes>
+        <Route path="/*" element={ 
+        <>
+        <Navbar />
+        <Header />  
+       {philosophers.length > 0 && <PhilosopherCard philosopher={philosophers.find((philosopher) => philosopher.name === selected)} />}
+       <div style={divStyle}></div>
+        </>
+        }/>
+           
+        <Route path="/fun_facts/*" element={
+        <> 
+        <Navbar />
+        <p style={secondHeaderStyle}><strong>Know Something Interesting About This Philosopher? Add A Fun Fact!</strong></p>
+        {philosophers.length > 0 && <FunFacts handleAddFact={handleAddFact} philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact} handleUpdateFact={handleUpdateFact} />}
+        <div style={divStyleNew}></div>
+        </>
+        }/>
+          
+        <Route path="/quotes/*" element={
+        <>
+        <Navbar />
+        <p style={secondHeaderStyle}>Scroll Down To See Some Famous Quotes</p>
+        <p style={secondHeaderStyle}>A Particular Quote Sparked Some Thoughts? Leave A Comment Under That Quote!</p>
+        {philosophers.length > 0 && <Quotes philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} selected={selected} />} 
+        <div style={divStyle}></div>
+        </>
+        }/>
+       
+        <Route path="/add_philosopher/*" element={ 
+        <>
+         <Navbar />
+        <p style={secondHeaderStyle}>Here You Can Add A New Philosopher</p>
+        <p style={secondHeaderStyle}><strong>They must be GREEK</strong></p>
+        <p style={secondHeaderStyle}>Click The Add Philosopher Button, Once Added, They Will Appear In The Dropdown Menu</p>
+        <AddPhilosopher handleAddPhilosopher={handleAddPhilosopher} setSelected={setSelected}/>
+        <div style={divStyle}></div>
+        </> 
+        }/>
+
+      </Routes>
+      
       {/* <button onClick={consoleLog}>console.log</button> */}
-
-      <Dropdown philosophers={philosophers} setSelected={setSelected}/>
-      
-       <AddPhilosopher handleAddPhilosopher={handleAddPhilosopher}/>
-
-
-
-
-     {philosophers.length > 0 && <FunFacts philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} handleDeleteFact={handleDeleteFact} handleUpdateFact={handleUpdateFact} />}
-
-
-
-     
-      
-      
-    {philosophers.length > 0 && <PhilosopherCard philosopher={philosophers.find((philosopher) => philosopher.name === selected)} thisUser={thisUser} selected={selected} />}
     
     </div>
   );

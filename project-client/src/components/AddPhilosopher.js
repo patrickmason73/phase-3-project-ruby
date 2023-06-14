@@ -5,7 +5,31 @@ const fullStyle = {
     backgroundColor: "#C0C0C0",
     paddingTop: "10px",
     paddingBottom: "13px",
+    display: "grid",
+    placeItems: "center",
 }
+
+const buttonStyle = {
+    alignItems: "center",
+    appearance: "button",
+    backgroundColor: "#0276FF",
+    borderRadius: "8px",
+    borderStyle: "none",
+    boxShadow: "rgba(255, 255, 255, 0.26) 0 1px 2px inset",
+    boxSizing: "border-box",
+    color: "#fff",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+    flexShrink: "0",
+    fontFamily: "RM Neue,sans-serif",
+    fontSize: "100%",
+    lineHeight: "1.15",
+    margin: ".3em",
+    padding: "10px 21px",
+    textAlign: "center", 
+  }
 
 function AddPhilosopher({ handleAddPhilosopher }) {
 
@@ -13,10 +37,10 @@ const origins = ["Athens", "Stagira", "Elea"]
 const eras = ["Ancient Greek", "Pre-Socratic"]
 
 const [adding, setAdding] = useState(false)
-const [name, setName] = useState("Diogenes")
+const [name, setName] = useState("")
 const [origin_id, setOrigin_id] = useState(82)
 const [era_id, setEra_id] = useState(23)
-const [img, setImg] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Diogenes-statue-Sinop-enhanced.jpg/220px-Diogenes-statue-Sinop-enhanced.jpg")
+const [img, setImg] = useState("")
    
 function handleSubmit(e) {
     e.preventDefault()
@@ -26,6 +50,12 @@ function handleSubmit(e) {
         era_id,
         img,
     })
+    setName("")
+    setOrigin_id(82)
+    setEra_id(23)
+    setImg("")
+    setAdding(false)
+    
 }
 
 function handleOriginChange(e) {
@@ -50,7 +80,7 @@ function handleEraChange(e) {
     return (
         
         <div style={fullStyle}>
-            <button onClick={() => setAdding(current => !current)}>{adding ? "CANCEL" : "+"}</button>
+            <button style={buttonStyle} onClick={() => setAdding(current => !current)}>{adding ? "CANCEL" : "ADD PHILOSOPHER"}</button>
             { adding ? (
             <>
             <h1>ADD A PHILOSOPHER</h1>

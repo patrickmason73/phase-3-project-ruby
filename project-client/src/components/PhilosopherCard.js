@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import Comment from "./Comment";
+import React from "react";
+
 
 const cardStyle = {
         alignItems: "center",
@@ -15,12 +15,6 @@ const imgStyle = {
     filter: "drop-shadow(8px 8px 10px black)"
 }
 
-const quoteStyle = {
-    padding: "1em",
-    display: "grid",
-    placeItems: "center",
-    fontSize: "130%",
-}
 
 const headerStyle = {
     padding: "1em",
@@ -28,29 +22,16 @@ const headerStyle = {
     placeItems: "center",
     fontSize: "170%",
 }
-function PhilosopherCard({ philosopher, thisUser, selected }) {
+function PhilosopherCard({ philosopher }) {
 
-    const {id, name, origin, img, quotes} = philosopher
+    const {id, name, origin, img} = philosopher
       
-
-    const displayQuotes = ( quotes ? quotes.map((quote) => {
-        return (
-            <div key={quote.id}>
-            <p style={quoteStyle}><strong>"{quote.quote}"</strong></p>
-
-            
-            <Comment quote={quote} thisUser={thisUser} selected={selected} />
-            </div>
-        )
-    })
-: null)
     return (
         <div key={id} style={cardStyle}>
             <p style={headerStyle}><strong>{name} of {origin ? origin.name : 'Athens'}</strong></p>
 
             <img src={img} alt={name} style={imgStyle}></img>
 
-            {displayQuotes}
         </div>
     )
 }

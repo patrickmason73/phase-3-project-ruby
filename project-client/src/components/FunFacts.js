@@ -7,6 +7,13 @@ const headerStyle = {
     paddingBottom: "10px",
 }
 
+const header2Style = {
+    padding: "1em",
+    display: "grid",
+    placeItems: "center",
+    fontSize: "170%",
+}
+
 const factStyle = {
     paddingTop: "6px",
     paddingBottom: "6px",
@@ -17,7 +24,16 @@ const fullStyle = {
     paddingTop: "5px"
 }
 
-function FunFacts({ philosopher, thisUser, handleDeleteFact, handleUpdateFact }) {
+const imgStyle = {
+    display: "block",
+    margin: "0 auto",
+    width: "40%",
+    height: "70%",
+    borderRadius: "8px",
+    filter: "drop-shadow(8px 8px 10px black)"
+}
+
+function FunFacts({ philosopher, thisUser, handleDeleteFact, handleUpdateFact, handleAddFact }) {
 
 
 const [editing, setEditing] = useState(false)
@@ -58,26 +74,12 @@ fun_facts.map((fact) => {
         
         </div>
     )
-}) :  null)
+}) :  <p style={headerStyle}>No Fun Facts :(</p>)
 
 function handleSubmit(e) {
     e.preventDefault()
-    fetch(`http://localhost:9292/fun_facts`, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-            fact: newFact,
-            user: thisUser,
-            philosopher_id: philosopher.id,
-        }),
-    })
-    .then(r => r.json())
-    .then((data) => {
-        setNewFact("")
-        fun_facts.push(data)
-    })
+    handleAddFact(philosopher, newFact)
+    setNewFact("")
 }
     return (
         <div style={fullStyle}>
@@ -97,7 +99,8 @@ function handleSubmit(e) {
                 <button type="submit">SEND</button>
                 <p>Show Me Your Knowledge!</p>
             </form>
-
+            <p style={header2Style}><strong>{philosopher.name} of {philosopher.origin ? philosopher.origin.name : 'Athens'}</strong></p>
+            <img src={philosopher.img} alt={philosopher.name} style={imgStyle}></img>
         </div>
     )
     }

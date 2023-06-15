@@ -49,7 +49,7 @@ function Quotes({ philosopher, thisUser, selected }) {
         <div key={id} style={cardStyle}>
             <p style={headerStyle}><strong>{name} of {origin ? origin.name : 'Athens'}</strong></p>
 
-            <img src={img} alt={name} style={imgStyle}></img>
+            {/* <img src={img} alt={name} style={imgStyle}></img> */}
 
             {displayQuotes}
         </div>
